@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import include, path
 from encyclopedia import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("encyclopedia.urls")),
     path('wiki/<str:title>', views.my_content, name='my_content' ),
-    path('search_wiki/', views.search_wiki, name='search_wiki' )
+    path('search_wiki/', views.search_wiki, name='search_wiki' ),
+    path('new_page/', views.create_new_page, name='create_new_page'),
+    path('new_page/add', views.new_page, name='new_page')
 ]

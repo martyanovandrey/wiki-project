@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from . import util
 import markdown2
+from django import forms
+from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.urls import reverse
 
 
 def index(request):
@@ -30,3 +33,22 @@ def search_wiki(request):
         return render(request, "encyclopedia/match.html", {
         "entries": match_list
     })
+
+class NewContent(forms.Form):
+    title = forms.CharField(label='Create title')
+    content = forms.CharField(label='Create content')
+
+def create_new_page(request):
+    return render(request, "encyclopedia/new_page.html")
+
+def new_page(request):
+    if request.method == 'POST':
+        form = NewContent(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            util.save_entry(title, content)
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            return HttpResponseNotFound('<h1>Fields can\'t be empty.</h1>')
+    return HttpResponseNotFound('<h1>Request method should be \"POST\"</h1>')
