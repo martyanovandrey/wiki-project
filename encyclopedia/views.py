@@ -46,9 +46,13 @@ def new_page(request):
         form = NewContent(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
-            content = form.cleaned_data['content']
-            util.save_entry(title, content)
-            return HttpResponseRedirect(reverse('index'))
+            entries = util.list_entries()
+            if any(title.lower() == val.lower() for val in entries):
+                return HttpResponseNotFound('<h1>Title already taken.</h1>') 
+            else:
+                content = form.cleaned_data['content']
+                util.save_entry(title, content)
+                return HttpResponseRedirect(reverse('index'))
         else:
             return HttpResponseNotFound('<h1>Fields can\'t be empty.</h1>')
     return HttpResponseNotFound('<h1>Request method should be \"POST\"</h1>')

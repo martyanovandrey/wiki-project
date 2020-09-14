@@ -1,6 +1,9 @@
-myList = ['CSS', 'Django', 'Git', 'HTML', 'Python']
-yo = 'cs'
+entries = ['CSS', 'Django', 'Git', 'HTML', 'Python']
+title = 'css2'
 
 
-matching = [s for s in myList if yo.lower() in s.lower()]
-print(matching)
+
+if any(title.lower() == val.lower() for val in entries):
+    print("Nice")
+else:
+    print('Taken')
