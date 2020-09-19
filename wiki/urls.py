@@ -24,5 +24,6 @@ urlpatterns = [
     path('wiki/<str:title>', views.my_content, name='my_content' ),
     path('search_wiki/', views.search_wiki, name='search_wiki' ),
     path('new_page', views.new_page, name='new_page'),
-    path('edit_page/<str:title>', views.edit_page, name='edit_page')
+    path('edit_page/<str:title>', views.edit_page, name='edit_page'),
+    path('wiki/', views.random_page, name='random_page' )
 ]

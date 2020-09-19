@@ -5,6 +5,8 @@ from django import forms
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
 from django.utils.html import strip_tags
+from django.shortcuts import redirect
+import random
 
 class NewContent(forms.Form):
     title = forms.CharField(label='Create title', widget=forms.TextInput(attrs={'class' : 'title_style'}))
@@ -83,3 +85,12 @@ def edit_page(request, title):
         return render(request, "encyclopedia/edit_page.html", {
         "edit_page": util.get_entry(title)
     })  
+
+#Random page
+def random_page(request):
+    title = random.choice(util.list_entries())
+    title_md = util.get_entry(title)
+    title_html = markdown2.markdown(title_md)
+    title_load = strip_tags(title_html)
+
+    return HttpResponseRedirect('/wiki/'+title)
