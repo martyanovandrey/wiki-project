@@ -3,16 +3,13 @@
 {% block body %}
 
     <h1> Edit page </h1>
-
     <form action="{% url 'new_page' %}" method = 'post'>
         {% csrf_token %}
-        <div style = 'display: flex; flex-direction: column'>
-        <label for="title">Create title</label>
-        <textarea id="title" name="title">{{title}}</textarea>
-        <label for="content">Create content</label>
-        <textarea id="content" name="content">{{content}}</textarea>
+        <div class = 'page_editor'>
+            {{ form }}
         </div>
         <input type="submit">
+        <input type="hidden" name="page_type" value='edit_page'/>
     </form>
-   
+
 {% endblock %}

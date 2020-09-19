@@ -13,7 +13,7 @@ h1 {
 }
 
 textarea {
-    width: 30%;
+    width: 60vh;
     height: 10em
 }
 
@@ -43,6 +43,6 @@ textarea {
 }
 
 .title_style {
-    width: 30%;
+    width: 60vh;
     height: 2em 
 }
