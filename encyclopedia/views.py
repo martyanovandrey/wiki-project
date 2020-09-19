@@ -9,7 +9,6 @@ from django.utils.html import strip_tags
 class NewContent(forms.Form):
     title = forms.CharField(label='Create title', widget=forms.TextInput(attrs={'class' : 'title_style'}))
     content = forms.CharField(widget=forms.Textarea(), label='Create content')
-    page_type = forms.HiddenInput()
 
 #List of all pages
 def index(request):
