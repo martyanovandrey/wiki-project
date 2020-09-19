@@ -13,7 +13,7 @@ h1 {
 }
 
 textarea {
-    width: 300px;
+    width: 30%;
     height: 10em
 }
 
@@ -35,4 +35,14 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+.page_editor {
+    display: flex;
+    flex-direction: column;
+}
+
+.title_style {
+    width: 30%;
+    height: 2em 
 }

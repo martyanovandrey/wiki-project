@@ -1,9 +1,6 @@
 entries = ['CSS', 'Django', 'Git', 'HTML', 'Python']
-title = 'css2'
+title = '/wiki/css'
 
 
 
-if any(title.lower() == val.lower() for val in entries):
-    print("Nice")
-else:
-    print('Taken')
+print(title.split('/')[1])

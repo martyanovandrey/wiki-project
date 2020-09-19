@@ -1,24 +1,18 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block body %}
-    <h1> Create new page </h1>
+
+    <h1> Edit page </h1>
 
     <form action="{% url 'new_page' %}" method = 'post'>
         {% csrf_token %}
-        <div class = 'page_editor'>
-            {{ form }}
+        <div style = 'display: flex; flex-direction: column'>
+        <label for="title">Create title</label>
+        <textarea id="title" name="title">{{title}}</textarea>
+        <label for="content">Create content</label>
+        <textarea id="content" name="content">{{content}}</textarea>
         </div>
         <input type="submit">
     </form>
-
-
+   
 {% endblock %}
-
-<!--
-        <div style = 'display: flex; flex-direction: column'>
-        <label for="title">Create title</label>
-        <textarea id="title" name="title"></textarea>
-        <label for="content">Create content</label>
-        <textarea id="content" name="content"></textarea>
-        </div>
--->
